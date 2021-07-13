@@ -1,0 +1,12 @@
+dn: cn=service_acct,ou=posix_group,dc=hashidemos,dc=com
+objectClass: posixGroup
+objectClass: top
+cn: admins
+gidNumber: 2000
+memberUid: cn=static-role-demo-user,ou=service_acct,dc=hashidemos,dc=com
+
+dn: cn=static-role-demo-user,ou=service_acct,dc=hashidemos,dc=com
+objectClass: person
+objectClass: top
+memberOf: cn=service_acct,ou=posix_group,dc=hashidemos,dc=com
+userPassword: {SSHA}HLrTnWKgmBA9cJOcCxVNRXmTmDPpFoK2
