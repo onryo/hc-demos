@@ -21,6 +21,12 @@ vault write openldap/role/dynamic-role \
     default_ttl=5m \
     max_ttl=1h
 
+pe "vault read openldap/role/dynamic-role"
+
+unset VAULT_TOKEN
+pe "vault login -method=ldap username=george password=${USER_PASSWORD}"
 pe "vault read openldap/creds/dynamic-role"
 
+unset VAULT_TOKEN
+pe "vault login -method=ldap username=bgreen password=${USER_PASSWORD}"
 pe "vault read openldap/creds/dynamic-role"

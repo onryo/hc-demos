@@ -61,3 +61,5 @@ docker run --name vault-openldap-demo \
   -v ${DIR}/ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom \
   --detach --rm \
   osixia/openldap:${OPENLDAP_DOCKER_VERSION} --copy-service
+
+pe "docker ps"

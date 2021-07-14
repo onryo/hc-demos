@@ -34,3 +34,6 @@ if [[ -z ${DEMO_WAIT} ]];then
 fi
 
 . demo-magic.sh -d -p -w ${DEMO_WAIT}
+
+export VAULT_TOKEN=root
+export VAULT_ADDR=http://127.0.0.1:8200
