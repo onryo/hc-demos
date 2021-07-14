@@ -14,6 +14,7 @@ cat << EOF
 docker run --name vault-demo
   -p 8200:8200
   --network demo
+  -e VAULT_UI=true
   --detach --rm
   vault server -dev -dev-root-token-id=root
 EOF
@@ -22,6 +23,7 @@ p
 docker run --name vault-demo \
   -p 8200:8200 \
   --network demo \
+  -e VAULT_UI=true \
   --detach --rm \
   vault server -dev -dev-root-token-id=root
 

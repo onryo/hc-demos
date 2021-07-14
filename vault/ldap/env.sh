@@ -14,11 +14,9 @@ LDAP_ADMIN_DN=${LDAP_ADMIN_DN:-"cn=admin,dc=hashidemos,dc=com"}
 LDAP_ADMIN_PASSWORD=${LDAP_ADMIN_PASSWORD:-"hashifolk"}
 BIND_DN=${BIND_DN:-"cn=read-only,dc=hashidemos,dc=com"}
 BIND_PW=${BIND_PW:-"devsecopsFTW"}
-GROUP_DN=${GROUP_DN:-"ou=um_group,dc=hashidemos,dc=com"}
-UM_GROUP_FILTER=${UM_GROUP_FILTER:-"(&(objectClass=groupOfUniqueNames)(uniqueMember={{.UserDN}}))"}
-UM_GROUP_ATTR=${UM_GROUP_ATTR:-"cn"}
-MO_GROUP_FILTER=${MO_GROUP_FILTER:-"(&(objectClass=person)(uid={{.Username}}))"}
-MO_GROUP_ATTR=${MO_GROUP_ATTR:-"memberOf"}
+GROUP_DN=${GROUP_DN:-"ou=groups,dc=hashidemos,dc=com"}
+GROUP_FILTER=${GROUP_FILTER:-"(&(objectClass=groupOfUniqueNames)(uniqueMember={{.UserDN}}))"}
+GROUP_ATTR=${GROUP_ATTR:-"cn"}
 USER_DN=${USER_DN:-"ou=people,dc=hashidemos,dc=com"}
 USER_ATTR=${USER_ATTR:-"cn"}
 USER_PASSWORD=${USER_PASSWORD:-"notagoodpassword"}
