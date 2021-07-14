@@ -1,0 +1,13 @@
+dn: cn=static_roles,ou=service_acct,dc=hashidemos,dc=com
+objectClass: groupofnames
+objectClass: top
+description: testing group for static role demo
+cn: static_roles
+member: cn=static_role_demo_user,ou=service_acct,dc=hashidemos,dc=com
+
+dn: cn=static_role_demo_user,ou=service_acct,dc=hashidemos,dc=com
+objectClass: person
+objectClass: top
+cn: static-role-demo-user
+sn: static-role-demo-user
+userPassword: {SSHA}HLrTnWKgmBA9cJOcCxVNRXmTmDPpFoK2

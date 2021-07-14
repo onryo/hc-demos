@@ -1,7 +1,7 @@
-dn: cn={{.Username}},ou=users,dc=learn,dc=example
+dn: cn={{.Username}},ou=service_acct,dc=hashidemos,dc=com
 objectClass: person
 objectClass: top
-cn: learn
+cn: demo
 sn: {{.Password | utf16le | base64}}
-memberOf: cn=dev,ou=groups,dc=learn,dc=example
+memberOf: cn=dynamic_roles,ou=service_acct,dc=hashidemos,dc=com
 userPassword: {{.Password}}

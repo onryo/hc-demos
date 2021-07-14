@@ -7,15 +7,15 @@ pe "vault secrets enable openldap"
 # Using group of unique names lookups
 cat << EOF
 vault write openldap/config
-    binddn="${BIND_DN}"
-    bindpass="${BIND_PW}"
+    binddn="${LDAP_ADMIN_DN}"
+    bindpass="${LDAP_ADMIN_PASSWORD}"
     url="${LDAP_URL}"
 EOF
 p
 
 vault write openldap/config \
-    binddn="${BIND_DN}" \
-    bindpass="${BIND_PW}" \
+    binddn="${LDAP_ADMIN_DN}" \
+    bindpass="${LDAP_ADMIN_PASSWORD}" \
     url="${LDAP_URL}" \
     insecure_tls=true
 

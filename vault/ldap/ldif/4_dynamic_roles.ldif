@@ -1,0 +1,6 @@
+dn: cn=dynamic_roles,ou=service_acct,dc=hashidemos,dc=com
+objectClass: groupofnames
+objectClass: top
+description: testing group for dynamic role demo
+cn: dynamic_roles
+member: 
