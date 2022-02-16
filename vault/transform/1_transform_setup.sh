@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 . env.sh
 
-green "This demo will read and write using the root token"
+green "Configuration of the transform secrets engine will performed using the root token"
 yellow "This is not normal for most operations with Vault and only illustrates basic usage journeys"
 
 green "Enable the transform secrets engine at transform/"
