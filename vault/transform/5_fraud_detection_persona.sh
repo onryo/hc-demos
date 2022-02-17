@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 . env.sh
 
-ENCODED_SSN=$(vault write -format=json transform/encode/customer value="123-45-6789" transformation=us-ssn | jq -r ".data.encoded_value")
+ENCODED_SSN=$(vault write -format=json transform/encode/fraud-detection value="123-45-6789" transformation=us-ssn | jq -r ".data.encoded_value")
 export VAULT_TOKEN=$(vault token create -format=json -policy="fraud-detection" | jq -r ".auth.client_token")
 
 # Fraud Detection persona

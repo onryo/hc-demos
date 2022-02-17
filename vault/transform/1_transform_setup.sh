@@ -6,8 +6,9 @@ yellow "This is not normal for most operations with Vault and only illustrates b
 
 green "Enable the transform secrets engine at transform/"
 pe "vault secrets enable transform"
+wait
 
-green "Create templates for US serial numbers, which allow for \"SSN:\" or \"ssn:\" prefixes"
+green "Create a template for US serial numbers, which allows for \"SSN:\" or \"ssn:\" prefixes"
 cat << EOF
 vault write transform/template/us-ssn
   type=regex
@@ -24,6 +25,7 @@ vault write transform/template/us-ssn \
   encode_format='$1-$2-$3' \
   decode_formats=last-four='*** ** $3' \
   alphabet=builtin/numeric
+wait
 
 echo
 green "Create transformation for SSN with internal tweak source"
@@ -39,6 +41,7 @@ vault write transform/transformations/fpe/us-ssn \
   template="us-ssn" \
   tweak_source=internal \
   allowed_roles=fraud-detection,customer-service,customer
+wait
 
 echo
 green "Create roles for each of our personas"
