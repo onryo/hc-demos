@@ -8,23 +8,12 @@ green "Enable the transform secrets engine at transform/"
 pe "vault secrets enable transform"
 wait
 
-green "Create a template for US serial numbers, which allows for \"SSN:\" or \"ssn:\" prefixes"
-cat << EOF
-vault write transform/template/us-ssn
-  type=regex
-  pattern='(?:SSN[: ]?|ssn[: ]?)?(\d{3})[- ]?(\d{2})[- ]?(\d{4})'
-  encode_format='\$1-\$2-\$3'
-  decode_formats=last-four='*** ** \$3'
-  alphabet=builtin/numeric
-EOF
-p
+green "Create roles for each of our personas"
+pe "vault write transform/role/fraud-detection transformations=us-ssn"
+pe "vault write transform/role/customer-service transformations=us-ssn"
+pe "vault write transform/role/customer transformations=us-ssn"
 
-vault write transform/template/us-ssn \
-  type=regex \
-  pattern='(?:SSN[: ]?|ssn[: ]?)?(\d{3})[- ]?(\d{2})[- ]?(\d{4})' \
-  encode_format='$1-$2-$3' \
-  decode_formats=last-four='*** ** $3' \
-  alphabet=builtin/numeric
+pe "vault list transform/role"
 wait
 
 echo
@@ -44,10 +33,21 @@ vault write transform/transformations/fpe/us-ssn \
 wait
 
 echo
-green "Create roles for each of our personas"
-pe "vault write transform/role/fraud-detection transformations=us-ssn"
-pe "vault write transform/role/customer-service transformations=us-ssn"
-pe "vault write transform/role/customer transformations=us-ssn"
+green "Create a template for US serial numbers, which allows for \"SSN:\" or \"ssn:\" prefixes"
+cat << EOF
+vault write transform/template/us-ssn
+  type=regex
+  pattern='(?:SSN[: ]?|ssn[: ]?)?(\d{3})[- ]?(\d{2})[- ]?(\d{4})'
+  encode_format='\$1-\$2-\$3'
+  decode_formats=last-four='*** ** \$3'
+  alphabet=builtin/numeric
+EOF
+p
 
-pe "vault list transform/role"
+vault write transform/template/us-ssn \
+  type=regex \
+  pattern='(?:SSN[: ]?|ssn[: ]?)?(\d{3})[- ]?(\d{2})[- ]?(\d{4})' \
+  encode_format='$1-$2-$3' \
+  decode_formats=last-four='*** ** $3' \
+  alphabet=builtin/numeric
 
